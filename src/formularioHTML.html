@@ -1,0 +1,49 @@
+<header>
+    <img src="./src/Banner.png" alt="Banner del laboratorio">
+</header>
+
+
+<div class="container">
+    <form class="formularioGoogle">
+        <h2>Formulario de Reserva de Laboratorio</h2>
+        <label for="docente">Nombre del Docente:</label>
+        <input type="text" id="docente" name="docente" required>
+
+        <label for="programa">Programa:</label>
+        <select id="programa" name="programa" required>
+            <option value="">Seleccione un programa</option>
+            <option value="Programa A">2131 - Tecnología Química</option>
+            <option value="Programa B">2710 - Tecnología Electrónica</option>
+            <option value="Programa C">2711 - Tecnología en sistemas de información</option>
+            <option value="Programa D">2722 - Tecnología en Mantenimiento de Sistemas Electromecánicos</option>
+            <option value="Programa E">2724 - Tecnología en Desarrollo de Software</option>
+            <option value="Programa F">2725 - Tecnología en Electrónica Industrial</option>
+            <option value="Programa G">2839 - Tecnología en Gestión Logística</option>
+            <option value="Programa H">3845 - Administración de Empresas</option>
+            <option value="Programa I">3857 - Comercio Exterior</option>
+        </select>
+
+        <label for="materia">Materia:</label>
+        <input type="text" id="materia" name="materia" required>
+
+        <label for="dia">Día de Reserva:</label>
+        <input type="date" id="dia" name="dia" required>
+
+        <label for="horario">Horario:</label>
+        <input type="time" id="horario" name="horario" required>
+
+        <label for="horas">Horas de clase:</label>
+        <input type="number" id="horas" name="horas" required>
+
+        <button type="submit" class="btnForm" id="btnEnviar">Reservar</button>
+    </form>
+    <div class="calendar-container">
+        <h2>Calendario de Reservas</h2>
+        <iframe id="calendarioGoogle" src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FBogota&bgcolor=%23ffffff&src=Y19lNmRlZTk3NjFiNmFkMzJhNmYyYmUzMjAxODBmZmQ4ZTZkMzJkNTJhY2Q3NWEyMjQ2ZTVjNTJhN2Y2ODEzNDdiQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%234285F4&color=%2333B679" scrolling="no"></iframe>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 - Laboratorio de la Universidad del Valle sede Yumbo</p>
+    <p>Formulario creado por el departamento de Recursos Tecnológicos</p>
+</footer>
