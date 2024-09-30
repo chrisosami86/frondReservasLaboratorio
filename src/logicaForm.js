@@ -2,6 +2,7 @@ export function initializeFormLogic() {
     const reservationForm = document.querySelector('#reservation-form');
     const reservationDateInput = document.querySelector('#reservation-date');
     const timeSlotSelect = document.querySelector('#time-slot');
+    const loadingScreen = document.querySelector('#loading-screen'); // Selecciona el div de carga
 
     // Obtener el campo de fecha y hora actual y rellenarlo automáticamente
     const currentDatetimeInput = document.querySelector('#current-datetime');
@@ -13,7 +14,7 @@ export function initializeFormLogic() {
         const selectedDate = event.target.value;
 
         try {
-            const response = await fetch('http://localhost:3000/validate-intervals', {
+            const response = await fetch('https://back-reservas-laboratorio.vercel.app/validate-intervals', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -68,15 +69,21 @@ export function initializeFormLogic() {
             timeSlotId, // Enviar solo el identificador
         };
 
+        // Mostrar la pantalla de carga
+        loadingScreen.style.display = 'block';
+
         // Enviar los datos al servidor
         try {
-            const response = await fetch('http://localhost:3000/register-reservation', {
+            const response = await fetch('https://back-reservas-laboratorio.vercel.app/register-reservation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(reservationData),
             });
+
+            // Ocultar la pantalla de carga
+            loadingScreen.style.display = 'none';
 
             if (response.ok) {
                 alert('Reserva registrada correctamente.');
@@ -91,6 +98,8 @@ export function initializeFormLogic() {
         } catch (error) {
             console.error('Error al enviar los datos:', error);
             alert('Error de red. Inténtalo nuevamente.');
+            // Ocultar la pantalla de carga en caso de error
+            loadingScreen.style.display = 'none';
         }
     });
 }

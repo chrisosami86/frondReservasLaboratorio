@@ -54,6 +54,11 @@ p{
   margin: 0 auto;
 }
 
+.info-container p span{
+  font-weight: bolder;
+}
+
+
 /* Estilos del formulario */
 form {
   display: flex;
@@ -99,6 +104,23 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #218838;
 }
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(49, 47, 47, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  z-index: 1000; /* Asegúrate de que esté sobre otros elementos */
+}
+
+
+
 
 /* Iframe del calendario */
 .calendar-container iframe {

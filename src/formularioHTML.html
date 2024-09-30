@@ -9,18 +9,19 @@
         <h2>Atención</h2>
         <p>
             El diligenciamiento del formulario, <span>NO</span> es una confirmación de la reserva, si no una solicitud,
-            la asignación se realizará mediante una respuesta de correo electrónico, donde se indicará si
-            se dio o no la asignación.           
+            la asignación se realizará mediante una respuesta de correo electrónico, donde se indicará si se
+            dio o no la asignación.          
         </p>
 
         <h2>Recuerde tener en cuenta lo siguiente:</h2>
         <ol>
+            <li>Si su reserva es periódica (se repite en el semestre, el día y la hora solicitada) deberá indicarlo en el campo de observaciones. </li>
             <li>La reserva debe hacerse mínimo con 48 horas de anticipación.</li>
             <li>La reserva solo se realiza para grupos de máximo de 22 estudiantes (por capacidad del espacio)</li>
             <li>El docente es el directo responsable del correcto uso del espacio y de los equipos que se encuentran en el</li>
             <li>
                 El docente debe solicitar la apertura y cierre del espacio con el personal de recursos tecnológicos
-                (bajo ninguna circunstancia debe irse sin solicitar el cierre de la misma, de ser así se negara
+                (bajo ninguna circunstancia debe irse sin solicitar el cierre del espacio, de ser así se negara
                 automáticamente el uso, en futuras solicitudes)
             </li>
         </ol>
@@ -84,12 +85,16 @@
             <!-- Campo Asignatura -->
             <div class="form-group">
                 <label for="Observations">Observaciones:</label>
-                <input type="text" id="Observations" name="Observations" placeholder="Indique si la reserva es para varios días o solo uno"/>
+                <input type="text" id="Observations" name="Observations" placeholder="Indique si la reserva es para varios días o solo uno" required/>
             </div>
 
             <!-- Botón Enviar -->
             <div class="form-group">
                 <button type="submit">Enviar</button>
+            </div>
+
+            <div id="loading-screen" style="display: none;">
+                <p>Cargando, por favor espera...</p>
             </div>
         </form>
 
