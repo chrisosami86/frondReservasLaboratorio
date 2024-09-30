@@ -1,49 +1,74 @@
-<header>
-    <img src="./src/Banner.png" alt="Banner del laboratorio">
-</header>
-
-
+<!-- Contenedor principal -->
 <div class="container">
-    <form class="formularioGoogle">
-        <h2>Formulario de Reserva de Laboratorio</h2>
-        <label for="docente">Nombre del Docente:</label>
-        <input type="text" id="docente" name="docente" required>
+    <!-- Banner / Imagen -->
+    <div class="banner">
+        <!-- Puedes agregar una imagen aquí -->
+        <img src="/Banner.png" alt="Banner" />
+    </div>
 
-        <label for="programa">Programa:</label>
-        <select id="programa" name="programa" required>
-            <option value="">Seleccione un programa</option>
-            <option value="Programa A">2131 - Tecnología Química</option>
-            <option value="Programa B">2710 - Tecnología Electrónica</option>
-            <option value="Programa C">2711 - Tecnología en sistemas de información</option>
-            <option value="Programa D">2722 - Tecnología en Mantenimiento de Sistemas Electromecánicos</option>
-            <option value="Programa E">2724 - Tecnología en Desarrollo de Software</option>
-            <option value="Programa F">2725 - Tecnología en Electrónica Industrial</option>
-            <option value="Programa G">2839 - Tecnología en Gestión Logística</option>
-            <option value="Programa H">3845 - Administración de Empresas</option>
-            <option value="Programa I">3857 - Comercio Exterior</option>
-        </select>
+    <!-- Formulario e iframe del calendario -->
+    <div class="form-container">
+        <form id="reservation-form">
+            <!-- Campo Fecha y Hora Actual -->
+            <div class="form-group">
+                <label for="current-datetime">Fecha y Hora Actual</label>
+                <input type="text" id="current-datetime" name="current-datetime" readonly />
+            </div>
 
-        <label for="materia">Materia:</label>
-        <input type="text" id="materia" name="materia" required>
+            <!-- Campo Nombre del Docente -->
+            <div class="form-group">
+                <label for="teacher-name">Nombre del Docente</label>
+                <input type="text" id="teacher-name" name="teacher-name" placeholder="Ingresa el nombre del docente" required />
+            </div>
 
-        <label for="dia">Día de Reserva:</label>
-        <input type="date" id="dia" name="dia" required>
+            <!-- Campo Programa -->
+            <div class="form-group">
+                <label for="program">Programa</label>
+                <select id="program" name="program" required>
+                    <option value="programa-a">Programa A</option>
+                    <option value="programa-b">Programa B</option>
+                    <option value="programa-c">Programa C</option>
+                </select>
+            </div>
 
-        <label for="horario">Horario:</label>
-        <input type="time" id="horario" name="horario" required>
+            <!-- Campo Asignatura -->
+            <div class="form-group">
+                <label for="subject">Asignatura</label>
+                <input type="text" id="subject" name="subject" placeholder="Ingresa la asignatura" required />
+            </div>
 
-        <label for="horas">Horas de clase:</label>
-        <input type="number" id="horas" name="horas" required>
+            <!-- Campo Día de Reserva -->
+            <div class="form-group">
+                <label for="reservation-date">Día de Reserva</label>
+                <input type="date" id="reservation-date" name="reservation-date" required />
+            </div>
 
-        <button type="submit" class="btnForm" id="btnEnviar">Reservar</button>
-    </form>
-    <div class="calendar-container">
-        <h2>Calendario de Reservas</h2>
-        <iframe id="calendarioGoogle" src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FBogota&bgcolor=%23ffffff&src=Y19lNmRlZTk3NjFiNmFkMzJhNmYyYmUzMjAxODBmZmQ4ZTZkMzJkNTJhY2Q3NWEyMjQ2ZTVjNTJhN2Y2ODEzNDdiQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%234285F4&color=%2333B679" scrolling="no"></iframe>
+            <!-- Campo Intervalo de Horas -->
+            <div class="form-group">
+                <label for="time-slot">Intervalo de Horas</label>
+                <select id="time-slot" name="time-slot" required>
+                    <option value="1">De 07:00 a 10:00</option>
+                    <option value="2">De 10:00 a 13:00</option>
+                    <option value="3">De 14:00 a 17:00</option>
+                    <option value="4">De 18:30 a 21:30</option>
+                </select>
+            </div>
+
+            <!-- Botón Enviar -->
+            <div class="form-group">
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+
+        <!-- Iframe para el calendario -->
+        <div class="calendar-container">
+            <iframe src="https://calendar.google.com/calendar/embed?src=c_e6dee9761b6ad32a6f2be320180ffd8e6d32d52acd75a2246e5c52a7f681347b%40group.calendar.google.com&ctz=America%2FBogota" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Universidad del Valle sede Yumbo. Todos los derechos reservados.</p>
+        <p>Desarrollado por el departamento de Recursos Tecnológicos</p>
     </div>
 </div>
-
-<footer>
-    <p>&copy; 2024 - Laboratorio de la Universidad del Valle sede Yumbo</p>
-    <p>Formulario creado por el departamento de Recursos Tecnológicos</p>
-</footer>
