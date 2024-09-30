@@ -13,7 +13,7 @@ export function initializeFormLogic() {
         const selectedDate = event.target.value;
 
         try {
-            const response = await fetch('http://localhost:3000/validate-intervals', {
+            const response = await fetch('https://back-reservas-laboratorio.vercel.app/validate-intervals', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ export function initializeFormLogic() {
 
         // Enviar los datos al servidor
         try {
-            const response = await fetch('http://localhost:3000/register-reservation', {
+            const response = await fetch('https://back-reservas-laboratorio.vercel.app/register-reservation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -82,6 +82,9 @@ export function initializeFormLogic() {
                 alert('Reserva registrada correctamente.');
                 // Opcionalmente, puedes limpiar el formulario después de enviarlo
                 reservationForm.reset();
+                currentDatetimeInput.value = now.toLocaleString();
+                const calendar = document.querySelector('#calendarIframe');
+                calendar.src = calendar.src;
             } else {
                 alert('Hubo un problema al registrar la reserva.');
             }
