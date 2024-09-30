@@ -13,7 +13,7 @@ export function initializeFormLogic() {
         const selectedDate = event.target.value;
 
         try {
-            const response = await fetch('https://back-reservas-laboratorio.vercel.app/validate-intervals', {
+            const response = await fetch('http://localhost:3000/validate-intervals', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ export function initializeFormLogic() {
 
         // Enviar los datos al servidor
         try {
-            const response = await fetch('https://back-reservas-laboratorio.vercel.app/register-reservation', {
+            const response = await fetch('http://localhost:3000/register-reservation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
