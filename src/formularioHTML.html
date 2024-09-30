@@ -5,6 +5,26 @@
         <!-- Puedes agregar una imagen aquí -->
         <img src="/Banner.png" alt="Banner" />
     </div>
+    <div class="info-container">
+        <h2>Atención</h2>
+        <p>
+            El diligenciamiento del formulario, <span>NO</span> es una confirmación de la reserva, si no una solicitud,
+            la asignación se realizará mediante una respuesta de correo electrónico, donde se indicará si
+            se dio o no la asignación.           
+        </p>
+
+        <h2>Recuerde tener en cuenta lo siguiente:</h2>
+        <ol>
+            <li>La reserva debe hacerse mínimo con 48 horas de anticipación.</li>
+            <li>La reserva solo se realiza para grupos de máximo de 22 estudiantes (por capacidad del espacio)</li>
+            <li>El docente es el directo responsable del correcto uso del espacio y de los equipos que se encuentran en el</li>
+            <li>
+                El docente debe solicitar la apertura y cierre del espacio con el personal de recursos tecnológicos
+                (bajo ninguna circunstancia debe irse sin solicitar el cierre de la misma, de ser así se negara
+                automáticamente el uso, en futuras solicitudes)
+            </li>
+        </ol>
+    </div>
 
     <!-- Formulario e iframe del calendario -->
     <div class="form-container">
@@ -59,6 +79,12 @@
                     <option value="3">De 14:00 a 17:00</option>
                     <option value="4">De 18:30 a 21:30</option>
                 </select>
+            </div>
+
+            <!-- Campo Asignatura -->
+            <div class="form-group">
+                <label for="Observations">Observaciones:</label>
+                <input type="text" id="Observations" name="Observations" placeholder="Indique si el día es para varios días o solo un día"/>
             </div>
 
             <!-- Botón Enviar -->

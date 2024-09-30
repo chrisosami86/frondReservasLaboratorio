@@ -37,7 +37,7 @@ p{
 }
 
 /* Contenedor del formulario */
-.form-container {
+.form-container, .info-container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -46,6 +46,12 @@ p{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   margin-bottom: 20px;
+  gap: 15px;
+}
+
+.info-container ol{
+  width: 90%;
+  margin: 0 auto;
 }
 
 /* Estilos del formulario */
