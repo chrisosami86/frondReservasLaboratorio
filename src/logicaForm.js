@@ -73,7 +73,7 @@ export function initializeFormLogic() {
         };
 
         try {
-            const response = await fetch('https://back-reservas-laboratorio.vercel.app//register-reservation', {
+            const response = await fetch('https://back-reservas-laboratorio.vercel.app/register-reservation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
