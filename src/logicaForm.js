@@ -65,7 +65,9 @@ export function initializeFormLogic() {
         }
 
         const reservationData = {
+            currentDatetime: currentDatetimeInput.value,  // Aquí envías el valor correcto
             teacherName,
+            program,
             subject,
             reservationDate,
             timeSlotId,
