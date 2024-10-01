@@ -2,14 +2,14 @@ export function initializeFormLogic() {
     const reservationForm = document.querySelector('#reservation-form');
     const reservationDateInput = document.querySelector('#reservation-date');
     const timeSlotSelect = document.querySelector('#time-slot');
-    const loadingScreen = document.querySelector('#loading-screen'); // Selecciona el div de carga
+    const loadingScreen = document.querySelector('#loading-screen');
 
-    // Obtener el campo de fecha y hora actual y rellenarlo automáticamente
+    // Obtener el campo de fecha y hora actual
     const currentDatetimeInput = document.querySelector('#current-datetime');
     const now = new Date();
     currentDatetimeInput.value = now.toLocaleString();
 
-    // Escuchar cambios en el campo de fecha para validar intervalos ocupados
+    // Escuchar cambios en la fecha de reserva para validar intervalos disponibles
     reservationDateInput.addEventListener('change', async (event) => {
         const selectedDate = event.target.value;
 
@@ -25,14 +25,14 @@ export function initializeFormLogic() {
             if (response.ok) {
                 const { availableIntervals } = await response.json();
 
-                // Limpiar las opciones del campo de intervalo de horas
+                // Limpiar las opciones previas
                 timeSlotSelect.innerHTML = '';
 
-                // Añadir las opciones de intervalos disponibles al campo select
+                // Añadir intervalos disponibles al select
                 availableIntervals.forEach((interval) => {
                     const option = document.createElement('option');
-                    option.value = interval.id; // Usar el identificador como valor
-                    option.textContent = `De ${interval.start} a ${interval.end}`; // Mostrar los rangos de tiempo
+                    option.value = interval.id;
+                    option.textContent = `De ${interval.start} a ${interval.end}`;
                     timeSlotSelect.appendChild(option);
                 });
             } else {
@@ -46,35 +46,34 @@ export function initializeFormLogic() {
 
     // Escuchar el envío del formulario
     reservationForm.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+        event.preventDefault();
 
-        // Obtener los valores de los campos
+        // Mostrar la pantalla de carga
+        loadingScreen.style.display = 'flex';
+
         const teacherName = document.querySelector('#teacher-name').value;
         const program = document.querySelector('#program').value;
         const subject = document.querySelector('#subject').value;
         const reservationDate = document.querySelector('#reservation-date').value;
-        const timeSlotId = document.querySelector('#time-slot').value; // Obtener solo el identificador
+        const timeSlotId = document.querySelector('#time-slot').value;
+        const observations = document.querySelector('#Observations').value;
 
-        // Validar que no haya campos vacíos
-        if (!teacherName || !program || !subject || !reservationDate || !timeSlotId) {
+        if (!teacherName || !program || !subject || !reservationDate || !timeSlotId || !observations) {
             alert('Por favor completa todos los campos.');
+            loadingScreen.style.display = 'none'; // Ocultar la pantalla de carga si falla la validación
             return;
         }
 
-        // Crear un objeto con los datos del formulario
         const reservationData = {
             teacherName,
             subject,
             reservationDate,
-            timeSlotId, // Enviar solo el identificador
+            timeSlotId,
+            observations,
         };
 
-        // Mostrar la pantalla de carga
-        loadingScreen.style.display = 'block';
-
-        // Enviar los datos al servidor
         try {
-            const response = await fetch('https://back-reservas-laboratorio.vercel.app/register-reservation', {
+            const response = await fetch('https://back-reservas-laboratorio.vercel.app//register-reservation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -82,24 +81,20 @@ export function initializeFormLogic() {
                 body: JSON.stringify(reservationData),
             });
 
-            // Ocultar la pantalla de carga
-            loadingScreen.style.display = 'none';
-
             if (response.ok) {
                 alert('Reserva registrada correctamente.');
-                // Opcionalmente, puedes limpiar el formulario después de enviarlo
                 reservationForm.reset();
-                currentDatetimeInput.value = now.toLocaleString();
+                currentDatetimeInput.value = new Date().toLocaleString();
                 const calendar = document.querySelector('#calendarIframe');
-                calendar.src = calendar.src;
+                calendar.src = calendar.src; // Refrescar el calendario
             } else {
                 alert('Hubo un problema al registrar la reserva.');
             }
         } catch (error) {
             console.error('Error al enviar los datos:', error);
             alert('Error de red. Inténtalo nuevamente.');
-            // Ocultar la pantalla de carga en caso de error
-            loadingScreen.style.display = 'none';
+        } finally {
+            loadingScreen.style.display = 'none'; // Ocultar la pantalla de carga
         }
     });
 }
